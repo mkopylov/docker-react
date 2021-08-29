@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t mkopylov/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mkopylov/docker-react npm run test
